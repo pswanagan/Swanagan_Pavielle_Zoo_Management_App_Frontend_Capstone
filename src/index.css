@@ -66,3 +66,25 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+h4 {
+  color: white;
+}
+
+.card-img{
+  height: 200px;
+  width: 200px;
+}
+.animal-list {
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.animal-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.animal-card {
+  /* Add any additional styling for each animal card */
+  border: 2px solid white;
+}
