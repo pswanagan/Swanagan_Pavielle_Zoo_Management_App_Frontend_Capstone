@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AnimalList from './components/AnimalList.jsx';
 import AddAnimal from './components/AddAnimal.jsx';
-import AnimalDetails from './components/AnimalDetails.jsx'
+
 import Home from './components/Home.jsx';
 import './App.css';
 
@@ -14,7 +14,6 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/animallist' element={<AnimalList />} />
           <Route path='/addanimal'element={<AddAnimal />} />
-          <Route path='/animals/:id' element={<AnimalDetails />} />
         </Routes>
      
     </Router>

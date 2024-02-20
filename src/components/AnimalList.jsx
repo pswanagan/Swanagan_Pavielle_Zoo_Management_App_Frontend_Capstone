@@ -1,11 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import AnimalCard from './AnimalCard'
+import AnimalCard from './AnimalCard';
+import AnimalDetailModal from './AnimalDetailModal';
 import '../App.css';
 
 export default function AnimalList() {
   const [animals, setAnimals] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAnimal, setSelectedAnimal] = useState(null);
 
   useEffect(() => {
     const getAnimals = async () => {
@@ -21,19 +24,45 @@ export default function AnimalList() {
     getAnimals();
   }, []);
 
+  const handleCardClick = (animal) => {
+    setSelectedAnimal(animal);
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => setIsModalOpen(false);
+  const handleDelete = (id) => {
+    // Implement deletion logic here
+    console.log(`Delete animal with id: ${id}`);
+    setIsModalOpen(false);
+  };
+  const handleEdit = (id) => {
+    // Implement edit navigation or logic here
+    console.log(`Edit animal with id: ${id}`);
+    // setIsModalOpen(false); Optionally close the modal here
+  };
+
+
   return (
     <div className="animal-list">
       <h2>Animal List</h2>
       <Link to="/add-animal">
         <button>Add Animal</button>
       </Link>
-      <div className="animal-cards">
-        {animals.map((animal, index) => (
-          <Link key={index} to={`/animals/${animal.animal_id}`}> {/* Add a Link around each Animal Card */}
+     
+        {animals.map((animal) => (
+          <div className="animal-cards" key={animal.id} onClick={() => handleCardClick(animal)} >
             <AnimalCard animal={animal} />
-          </Link>
+            </div>
         ))}
-      </div>
+       {selectedAnimal && (
+        <AnimalDetailModal
+          isOpen={isModalOpen}
+          onClose={handleClose}
+          animal={selectedAnimal}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
+      )}
     </div>
   );
 }

@@ -88,3 +88,22 @@ h4 {
   /* Add any additional styling for each animal card */
   border: 2px solid white;
 }
+
+
+.animal-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black; /* Semi-transparent black background */
+  z-index: 1000; /* Ensure it's on top of other content */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  overflow-y: auto; /* Enable scrolling for overflowing content */
+}
+
+.animal-modal li {
+  list-style-type: none;
+}
