@@ -1,10 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import KeeperRow from './KeeperRow';
+import KeeperDetailsModal from './KeeperDetailsModal';
 export default function KeeperList(){
     const [keepers, setKeepers] = useState([]);
-
+    const [selectedKeeper, setSelectedKeeper] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
         const fetchKeepers = async () => {
             try {
@@ -18,22 +20,38 @@ export default function KeeperList(){
         fetchKeepers();
     }, []);
 
+    const handleSelectKeeper = (keeper) => {
+        setSelectedKeeper(keeper);
+        setIsModalOpen(true);
+    };
+
+    const handleClose = () => setIsModalOpen(false);
+ 
+
     return (
+        <div>
         <table>
             <thead>
                 <tr>
-                    <th>E_ID</th>
+                    <th>Employee ID</th>
                     <th>Name</th>
                 </tr>
             </thead>
             <tbody>
                 {keepers.map((keeper) => (
-                    <tr key={keeper.e_id}>
-                        <td>{keeper.e_id}</td>
-                        <td>{keeper.name}</td>
-                    </tr>
+                    <KeeperRow key={keeper.e_id} keeper={keeper} onSelectKeeper={ handleSelectKeeper} />
                 ))}
             </tbody>
         </table>
+        {selectedKeeper && (
+        <KeeperDetailsModal
+          isOpen={isModalOpen}
+          onClose={handleClose}
+          keeper={selectedKeeper}
+         
+        />
+      )}
+        
+    </div>
     );
 }

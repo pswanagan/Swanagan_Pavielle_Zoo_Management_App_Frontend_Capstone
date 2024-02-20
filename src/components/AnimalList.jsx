@@ -30,16 +30,7 @@ export default function AnimalList() {
   };
 
   const handleClose = () => setIsModalOpen(false);
-  const handleDelete = (id) => {
-    // Implement deletion logic here
-    console.log(`Delete animal with id: ${id}`);
-    setIsModalOpen(false);
-  };
-  const handleEdit = (id) => {
-    // Implement edit navigation or logic here
-    console.log(`Edit animal with id: ${id}`);
-    // setIsModalOpen(false); Optionally close the modal here
-  };
+ 
 
 
   return (
@@ -59,8 +50,7 @@ export default function AnimalList() {
           isOpen={isModalOpen}
           onClose={handleClose}
           animal={selectedAnimal}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
+         
         />
       )}
     </div>
