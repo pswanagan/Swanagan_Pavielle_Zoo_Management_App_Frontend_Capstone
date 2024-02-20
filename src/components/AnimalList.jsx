@@ -45,7 +45,7 @@ export default function AnimalList() {
   return (
     <div className="animal-list">
       <h2>Animal List</h2>
-      <Link to="/add-animal">
+      <Link to="/addanimal">
         <button>Add Animal</button>
       </Link>
      

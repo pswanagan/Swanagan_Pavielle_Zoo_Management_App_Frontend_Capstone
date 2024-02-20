@@ -5,7 +5,7 @@ import axios from 'axios';
 export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
   
     const [editMode, setEditMode] = useState(false);
-    const [editedAnimal, setEditedAnimal] = useState(animal);
+    const  id = animal.animal_id;
 
     const [formData, setFormData] = useState({
         species: animal.species,
@@ -22,14 +22,20 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
     const handleEdit = () => {
       setEditMode(true);
     };
-  
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({ ...prevState, [name]: value }));
+      };
     const handleSave = async (e) => {
       e.preventDefault();
       try {
-        await axios.patch(`http://localhost:5050/animals/${animal.id}`, editedAnimal);
-        setEditMode(false);
-        onClose(); // Close modal after save
-        refreshAnimals(); // Refresh the animal list to show updated info
+        await axios.patch(`http://localhost:5050/animals/${id}`, formData)
+        .then(response => {
+            console.log("Update successful", response.data);
+            setEditMode(false);
+            onClose();
+            //refreshAnimals();
+          })
       } catch (error) {
         console.error('Failed to update animal:', error);
       }
@@ -38,9 +44,9 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
     const handleDelete = async () => {
       if (window.confirm('Are you sure you want to delete this animal?')) {
         try {
-          await axios.delete(`http://localhost:5050/animals/${animal.id}`);
+          await axios.delete(`http://localhost:5050/animals/${id}`);
           onClose(); // Close modal after delete
-          refreshAnimals(); // Refresh the animal list to remove the deleted animal
+          //refreshAnimals(); // Refresh the animal list to remove the deleted animal
         } catch (error) {
           console.error('Failed to delete animal:', error);
         }
