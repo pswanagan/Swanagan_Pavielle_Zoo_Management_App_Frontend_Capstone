@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
@@ -17,7 +17,17 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
     phone: keeper.phone,
     animals: keeper.animals
   });
-
+  useEffect(() => {
+    setFormData({
+        e_id: keeper.e_id,
+        name: keeper.name,
+        username: keeper.username,
+        email: keeper.email,
+        address: keeper.address,
+        phone: keeper.phone,
+        animals: keeper.animals// Assuming keepers is an array or string you want to edit
+    });
+  }, [keeper]);
   const handleEdit = () => {
     setEditMode(true);
   };
@@ -100,6 +110,7 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
           </form>
         ) : (
           <>
+          <img src="/placeholder.png" alt="placeholder Image" />
             <h2>Name: {keeper.name}</h2>
             <p>Username: {keeper.username}</p>
             <p>Email: {keeper.email}</p>

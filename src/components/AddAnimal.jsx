@@ -13,7 +13,7 @@ export default function AddAnimal(){
     description: "",
     weight_kg: 0,
     height_cm: 0,
-    image: "",
+    image: '/placeholder.png',
     keepers: []
   });
   const handleAddKeeper = (e) => {
@@ -38,6 +38,7 @@ export default function AddAnimal(){
       alert('Animal added successfully!');
       // Reset the form state (optional)
       setFormData({
+        animal_id: "",
         name: "",
         species: "",
         family: "",
@@ -61,6 +62,9 @@ export default function AddAnimal(){
       <h2>Add New Animal</h2>
       <form onSubmit={handleSubmit}>
         {/* Repeat this pattern for each field you have */}
+        <label>Animal ID:
+                      <input type="number" name="animal_id" required value={formData.animal_id} onChange={handleChange} />
+                  </label>
         <label>
           Name:
           <input type="text" name="name" required value={formData.name} onChange={handleChange} />
@@ -81,15 +85,20 @@ export default function AddAnimal(){
                   <label>Diet:
                       <input type="text" name="diet" value={formData.diet} required onChange={handleChange} />
                   </label>
+                  <label>Description:
+                      <textarea name="description" value={formData.description} required onChange={handleChange} />
+                  </label>
                   <label>Weight (kg):
                       <input type="number" name="weight_kg" required value={formData.weight_kg} onChange={handleChange} />
                   </label>
                   <label>Height (cm):
                       <input type="number" name="height_cm" value={formData.height_cm} required onChange={handleChange} />
                   </label>
-                  <label>Description:
-                      <textarea name="description" value={formData.description} required onChange={handleChange} />
-                  </label>
+                 
+                  <label>
+         Image:
+          <input type="text" name="image" disabled value={formData.image} onChange={handleChange} />
+        </label>
         <label>
   Keepers (Press Enter to add):
   <input type="text" onKeyPress={handleAddKeeper} />
