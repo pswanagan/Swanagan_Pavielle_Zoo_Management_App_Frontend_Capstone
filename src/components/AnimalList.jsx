@@ -41,12 +41,13 @@ export default function AnimalList() {
         <button>Add Animal</button>
       </Link>
      <br />
-     <br />
+     <br /><div className="animal-cards">
         {animals.map((animal) => (
-          <div className="animal-cards" key={animal.id} onClick={() => handleCardClick(animal)} >
+          <div  key={animal.id} onClick={() => handleCardClick(animal)} >
             <AnimalCard animal={animal} />
             </div>
         ))}
+        </div>
        {selectedAnimal && (
         <AnimalDetailModal
           isOpen={isModalOpen}

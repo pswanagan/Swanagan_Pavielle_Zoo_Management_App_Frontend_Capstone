@@ -39,7 +39,7 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
         console.log("Update successful", response.data);
         setEditMode(false);
         onClose();
-        // refreshKeepers(); // Implement or call refreshKeepers to update the list.
+        
       });
     } catch (error) {
       console.error('Failed to update keeper:', error);
@@ -51,7 +51,7 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
       try {
         await axios.delete(`https://swanagan-pavielle-zoo-animal-management.onrender.com/keepers/${id}`);
         onClose(); // Close modal after delete
-        // refreshKeepers(); // Implement or call refreshKeepers to update the list.
+        
       } catch (error) {
         console.error('Failed to delete keeper:', error);
       }

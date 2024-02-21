@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color:  #1a1a1a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -75,18 +75,22 @@ h4 {
   width: 200px;
 }
 .animal-list {
-  padding: 20px; /* Add padding for better spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .animal-cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
 .animal-card {
   /* Add any additional styling for each animal card */
   border: 2px solid white;
+  margin: 10px;
 }
 
 
@@ -112,6 +116,7 @@ h4 {
 table {
   width: 100%;
   border-collapse: collapse;
+
 }
 
 th, td {
@@ -121,25 +126,15 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color:black;
 }
 
 tr:hover {
   background-color: #ddd; /* Highlight row on hover */
 }
 
-.keeper-modal {
-  position: fixed; /* or 'absolute' if its container is positioned relative to the viewport */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100; /* ensure it's above other content */
-}
+
+
 
 .keeper-modal-content{
   background-color: 'red';
@@ -174,4 +169,14 @@ tr:hover {
   padding: 8px 16px; /* Padding inside buttons */
   cursor: pointer; /* Cursor changes to pointer on hover */
   /* Add more button styling as needed */
+}
+.home-page li{
+list-style-type: none;
+
+}
+
+
+.form-column {
+  display: flex;
+  flex-direction: column;
 }

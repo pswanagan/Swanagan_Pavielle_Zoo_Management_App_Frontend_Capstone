@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
@@ -8,17 +8,35 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
     const  id = animal.animal_id;
 
     const [formData, setFormData] = useState({
-        species: animal.species,
+        animal_id: animal.animal_id,
+        name: animal.name,
+      species: animal.species,
         family: animal.family,
         habitat: animal.habitat,
         place_of_found: animal.place_of_found,
         diet: animal.diet,
+        description: animal.description,
         weight_kg: animal.weight_kg,
         height_cm: animal.height_cm,
-        description: animal.description,
+        image: animal.image,
         keepers: animal.keepers // Assuming keepers is an array or string you want to edit
       });
-
+      useEffect(() => {
+        setFormData({
+          animal_id: animal.animal_id,
+          name: animal.name,
+        species: animal.species,
+          family: animal.family,
+          habitat: animal.habitat,
+          place_of_found: animal.place_of_found,
+          diet: animal.diet,
+          description: animal.description,
+          weight_kg: animal.weight_kg,
+          height_cm: animal.height_cm,
+          image: animal.image,
+          keepers: animal.keepers// Assuming keepers is an array or string you want to edit
+        });
+      }, [animal]);
       
   
     const handleEdit = () => {

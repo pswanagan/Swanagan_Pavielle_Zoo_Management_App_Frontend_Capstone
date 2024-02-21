@@ -7,8 +7,8 @@ const Home = () => {
     
 
     return (
-        <div>
-            <h1>Home Page</h1>
+        <div className="home-page">
+            <h1>Zoo Management App</h1>
             <br />
             <ul>
                 <li>
