@@ -14,7 +14,7 @@ export default function AnimalList() {
   useEffect(() => {
     const getAnimals = async () => {
       try {
-        const response = await fetch('http://localhost:5050/animals');
+        const response = await fetch('https://swanagan-pavielle-zoo-animal-management.onrender.com/animals');
         const data = await response.json();
         setAnimals(data);
       } catch (err) {

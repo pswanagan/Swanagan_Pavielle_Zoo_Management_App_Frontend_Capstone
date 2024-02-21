@@ -35,7 +35,7 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5050/keepers/${id}`, formData).then(response => {
+      await axios.patch(`https://swanagan-pavielle-zoo-animal-management.onrender.com/keepers/${id}`, formData).then(response => {
         console.log("Update successful", response.data);
         setEditMode(false);
         onClose();
@@ -49,7 +49,7 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this keeper?')) {
       try {
-        await axios.delete(`http://localhost:5050/keepers/${id}`);
+        await axios.delete(`https://swanagan-pavielle-zoo-animal-management.onrender.com/keepers/${id}`);
         onClose(); // Close modal after delete
         // refreshKeepers(); // Implement or call refreshKeepers to update the list.
       } catch (error) {

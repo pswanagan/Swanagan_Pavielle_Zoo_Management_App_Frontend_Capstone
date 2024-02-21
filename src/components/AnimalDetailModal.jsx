@@ -31,7 +31,7 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
     const handleSave = async (e) => {
       e.preventDefault();
       try {
-        await axios.patch(`http://localhost:5050/animals/${id}`, formData)
+        await axios.patch(`https://swanagan-pavielle-zoo-animal-management.onrender.com/animals/${id}`, formData)
         .then(response => {
             console.log("Update successful", response.data);
             setEditMode(false);
@@ -46,7 +46,7 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
     const handleDelete = async () => {
       if (window.confirm('Are you sure you want to delete this animal?')) {
         try {
-          await axios.delete(`http://localhost:5050/animals/${id}`);
+          await axios.delete(`https://swanagan-pavielle-zoo-animal-management.onrender.com/animals/${id}`);
           onClose(); // Close modal after delete
         
         } catch (error) {

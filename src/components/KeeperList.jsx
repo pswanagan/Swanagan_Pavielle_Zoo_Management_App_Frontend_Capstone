@@ -11,7 +11,7 @@ export default function KeeperList(){
     useEffect(() => {
         const fetchKeepers = async () => {
             try {
-                const response = await axios.get('http://localhost:5050/keepers');
+                const response = await axios.get('https://swanagan-pavielle-zoo-animal-management.onrender.com/keepers');
                 setKeepers(response.data);
             } catch (error) {
                 console.error('Failed to fetch keepers:', error);
