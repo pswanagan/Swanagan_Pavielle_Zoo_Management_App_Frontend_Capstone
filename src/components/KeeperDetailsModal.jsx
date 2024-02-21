@@ -85,10 +85,11 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
   if (!isOpen) return null;
 
   return (
-    <div className='keeper-modal'>
+    <div className='modal'>
       <div className='keeper-modal-content'>
         {editMode ? (
           <form onSubmit={handleSave}>
+            <div className='inputs-column'>
             <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name" />
       <input type="text" name="username" value={formData.username} onChange={handleInputChange} placeholder="Username" />
       <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email" />
@@ -107,6 +108,7 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
       ))}
         <button type='button' onClick={() => setEditMode(false)}>Cancel</button>
             <button type="submit">Submit</button>
+            </div>
           </form>
         ) : (
           <>
@@ -116,6 +118,7 @@ export default function KeeperDetailsModal({ keeper, onClose, isOpen }) {
             <p>Email: {keeper.email}</p>
             <p>Address: {`${keeper.address.street}, ${keeper.address.city}, ${keeper.address.zip}`}</p>
             <p>Phone: {keeper.phone}</p>
+            <p>Animals: {keeper.animals}</p>
             <button onClick={handleEdit}>Edit</button> 
             <button onClick={handleDelete}>Delete</button>
             <button onClick={onClose}>Close</button>

@@ -36,7 +36,7 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
             console.log("Update successful", response.data);
             setEditMode(false);
             onClose();
-            //refreshAnimals();
+          
           })
       } catch (error) {
         console.error('Failed to update animal:', error);
@@ -48,7 +48,7 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
         try {
           await axios.delete(`http://localhost:5050/animals/${id}`);
           onClose(); // Close modal after delete
-          //refreshAnimals(); // Refresh the animal list to remove the deleted animal
+        
         } catch (error) {
           console.error('Failed to delete animal:', error);
         }
@@ -60,9 +60,10 @@ export default function AnimalDetailModal ({ isOpen, onClose, animal})  {
 const keepers = animal.keepers.map(k => k + ' ');
 const keeper = animal.keepers.length > 0 ? keepers : 'None';
   return (
-    <div className='animal-modal'>
+    <div className='modal'>
       {editMode ? (
-        <><img className='card-img' src={animal.image} alt={animal.name} /><h2>{animal.name}</h2><form onSubmit={handleSave}>
+        <div className='inputs-column'>
+        <img className='card-img' src={animal.image} alt={animal.name} /><h2>{animal.name}</h2><form onSubmit={handleSave}>
                   {/* Form fields for animal details, pre-populated with editedAnimal state */}
                   <label>Species:
                       <input type="text" name="species" value={formData.species} onChange={handleChange} />
@@ -92,26 +93,29 @@ const keeper = animal.keepers.length > 0 ? keepers : 'None';
                       <input type="text" name="keepers" value={formData.keepers} onChange={handleChange} />
                   </label>
                   <button type="submit">Save Changes</button><button type='button' onClick={() => setEditMode(false)}>Cancel</button>
-              </form></>
+              </form></div>
   ) : (
     <>
-      {/* Display animal details */}
-      <img className='card-img' src={animal.image} alt={animal.name} />
-        <h2>{animal.name}</h2>
-        <ul>
-               <li>Species: {animal.species}</li>
-                <li>Family: {animal.family}</li>
-                <li>Habitat: {animal.habitat}</li>
-                <li>Places Found: {animal.place_of_found}</li>
-                <li>Diet: {animal.diet}</li>
-                <li>Weight: {animal.weight_kg}kg</li>
-                <li>Height: {animal.height_cm}cm</li>
-                <li>Description: <p>{animal.description}</p></li>
-                <li>Keepers: {keeper}</li>
-              </ul>
-      <button onClick={handleEdit}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
-      <button onClick={onClose}>Close</button>
+       <div className="animal-details">
+    <img className='card-img' src={animal.image} alt={animal.name} />
+    <h2>{animal.name}</h2>
+    <ul>
+      <li>Species: {animal.species}</li>
+      <li>Family: {animal.family}</li>
+      <li>Habitat: {animal.habitat}</li>
+      <li>Places Found: {animal.place_of_found}</li>
+      <li>Diet: {animal.diet}</li>
+      <li>Weight: {animal.weight_kg}kg</li>
+      <li>Height: {animal.height_cm}cm</li>
+      <li>Description: <p>{animal.description}</p></li>
+      <li>Keepers: {keeper}</li>
+    </ul>
+  </div>
+  <div className="buttons-container">
+    <button onClick={handleEdit}>Edit</button>
+    <button onClick={handleDelete}>Delete</button>
+    <button onClick={onClose}>Close</button>
+  </div>
     </>
   )}
   

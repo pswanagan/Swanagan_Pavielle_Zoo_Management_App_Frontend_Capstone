@@ -90,21 +90,22 @@ h4 {
 }
 
 
-.animal-modal {
+.modal {
+  background-color: black;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: black; /* Semi-transparent black background */
-  z-index: 1000; /* Ensure it's on top of other content */
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  overflow-y: auto; /* Enable scrolling for overflowing content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+  overflow-y: auto;
 }
 
-.animal-modal li {
+.modal li {
   list-style-type: none;
 }
 
@@ -148,4 +149,29 @@ tr:hover {
   width: '90%';
   max-height: '90vh';
   overflow-y: 'auto';
+}
+.inputs-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adjust the space between inputs as needed */
+}
+
+.animal-details img,
+.animal-details h2,
+.animal-details ul {
+  margin-bottom: 10px; /* Space underneath each element */
+  margin-top: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  justify-content: center; /* Center buttons horizontally */
+}
+
+/* Additional styling for buttons */
+.buttons-container button {
+  padding: 8px 16px; /* Padding inside buttons */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  /* Add more button styling as needed */
 }
