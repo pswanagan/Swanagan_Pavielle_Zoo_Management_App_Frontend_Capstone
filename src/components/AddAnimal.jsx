@@ -34,7 +34,7 @@ export default function AddAnimal(){
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     try {
-      await axios.post('https://swanagan-pavielle-zoo-animal-management.onrender.com/animals/', formData);
+      await axios.post('http://localhost:5050/animals/', formData);
       alert('Animal added successfully!');
       // Reset the form state (optional)
       setFormData({

@@ -5,9 +5,9 @@ The Zoo Management System is a comprehensive web application designed to facilit
 Technologies Used
 Frontend: React
 Backend: Node.js, Express
-Database: MongoDB (assumed based on typical Node.js stack)
-State Management: React Context or Redux (if used)
-Styling: CSS/SASS
+Database: MongoDB 
+State Management: React Context 
+Styling: CSS
 
 Features
 Animal Management: Add, view, edit, and delete animals with details like species, habitat, diet, etc.
